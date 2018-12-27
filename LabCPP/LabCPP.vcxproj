@@ -117,12 +117,14 @@
   <ItemGroup>
     <ClCompile Include="Data.cpp" />
     <ClCompile Include="glowny.cpp" />
+    <ClCompile Include="Kierownik.cpp" />
     <ClCompile Include="ListaPracownikow.cpp" />
     <ClCompile Include="Napis.cpp" />
     <ClCompile Include="Pracownik.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Data.h" />
+    <ClInclude Include="Kierownik.h" />
     <ClInclude Include="ListaPracownikow.h" />
     <ClInclude Include="Napis.h" />
     <ClInclude Include="Pracownik.h" />

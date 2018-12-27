@@ -109,6 +109,19 @@ int Pracownik::Porownaj(const Pracownik & wzorzec) const
 	else return sprDate;
 }
 
+void Pracownik::WypiszDane()
+{
+	std::cout << *this;
+}
+
+Pracownik * Pracownik::KopiaObiektu()
+{
+	Pracownik *kopia;
+	kopia = new Pracownik();
+	kopia = this;
+	return kopia;
+}
+
 std::ostream & operator<<(std::ostream & wy, const Pracownik & p)
 {
 	return wy << p.m_nIDZatrudnienia << " " << p.m_Imie << " " << p.m_Nazwisko << " " << p.m_DataUrodzenia;

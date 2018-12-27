@@ -30,6 +30,9 @@
     <ClCompile Include="Pracownik.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Kierownik.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Data.h">
@@ -42,6 +45,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Pracownik.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Kierownik.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
