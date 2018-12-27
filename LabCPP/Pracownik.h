@@ -1,4 +1,6 @@
 #pragma once
+#ifndef _Pracownik_H_
+#define _Pracownik_H_
 
 #include "Napis.h"
 #include "Data.h"
@@ -50,3 +52,5 @@ public:
 	int Porownaj(const Pracownik& wzorzec) const;
 };
 
+
+#endif

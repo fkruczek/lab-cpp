@@ -2,9 +2,12 @@
 #define _CRT_SECURE_NO_WARNINGS 
 #include <iostream>
 #include <cstring>
+#include "Data.h"
 #include "Pracownik.h"
 #include "Napis.h"
 #include "ListaPracownikow.h"
+
+void wyswietlMenu();
 
 int main()
 {
@@ -39,4 +42,9 @@ int main()
 
 //	pracownicy.Szukaj("nowak", "adam")->Wypisz();
 	return 0;
+}
+
+void wyswietlMenu()
+{
+	std::cout << "Menu : ";
 }

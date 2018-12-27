@@ -1,4 +1,7 @@
 #pragma once
+#ifndef _Napis_H_
+#define _Napis_H_
+
 #include <iostream>
 class Napis
 {
@@ -38,3 +41,4 @@ public:
 
 };
 
+#endif

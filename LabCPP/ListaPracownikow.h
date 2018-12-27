@@ -1,4 +1,7 @@
 #pragma once
+#ifndef _ListaPracownikow_H_
+#define _ListaPracownikow_H_
+
 #include "Pracownik.h"
 
 class ListaPracownikow
@@ -20,3 +23,4 @@ public:
 
 };
 
+#endif

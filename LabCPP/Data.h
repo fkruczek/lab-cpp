@@ -1,4 +1,7 @@
 #pragma once
+#ifndef _Data_H_
+#define _Data_H_
+
 #include <iostream>
 
 
@@ -35,3 +38,4 @@ public:
 	friend std::istream & operator>>(std::istream & we, Data &d);
 };
 
+#endif
