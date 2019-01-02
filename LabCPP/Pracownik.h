@@ -12,7 +12,7 @@ private:
 	Napis m_Nazwisko;
 	Data m_DataUrodzenia;
 	const int m_nIDZatrudnienia;
-	int ID; //dorobic id
+	static int m_ID;
 public:
 	Pracownik(const char *im = "", const char *naz= "", int dzien = 1, int miesiac = 1, int rok = 2000);
 	Pracownik(const Pracownik & wzor);

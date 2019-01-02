@@ -2,8 +2,8 @@
 #include "Pracownik.h"
 #include <iostream>
 #include <cstring>
-
-Pracownik::Pracownik(const char * im, const char * naz, int dzien, int miesiac, int rok) :m_nIDZatrudnienia(100)
+int Pracownik::m_ID = 1000;
+Pracownik::Pracownik(const char * im, const char * naz, int dzien, int miesiac, int rok) :m_nIDZatrudnienia(++m_ID)
 {
 	m_Imie.Ustaw(im);
 	m_pNastepny = nullptr;
