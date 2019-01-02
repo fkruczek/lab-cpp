@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS 
 #include "ListaPracownikow.h"
 #include <iostream>
+#include <fstream>
 
 ListaPracownikow::ListaPracownikow()
 {
@@ -110,4 +111,52 @@ const Pracownik * ListaPracownikow::Szukaj(const char * nazwisko, const char * i
 		else x = x->m_pNastepny;
 	}
 	return x;
+}
+
+void ListaPracownikow::Zapisz()
+{
+	std::fstream plik;
+	Pracownik *x = new Pracownik(*m_pPoczatek);
+	plik.open("dane.txt", std::ios::out);
+	if (plik.good())
+	{
+		while (x != nullptr)
+		{
+			plik << *x << "\n";
+			x = x->m_pNastepny;
+		}
+		plik.close();
+	}
+}
+
+void ListaPracownikow::Wczytaj()
+{
+	std::ifstream plik;
+	Pracownik *p;
+	plik.open("dane.txt", std::ios::in);
+	if (plik.good())
+	{
+		while (!plik.eof())
+		{
+			p = new Pracownik;
+			plik >> *p;
+			this->Dodaj(*p);
+			delete p;
+		}
+		plik.close();
+	}
+}
+
+void ListaPracownikow::Wypisz() const
+{
+	if (m_nLiczbaPracownikow == 0) { std::cout << "Lista pusta" << std::endl; }
+	else
+	{
+		Pracownik *x = m_pPoczatek;
+		while (x != nullptr)
+		{
+			std::cout << *x << std::endl;
+			x = x->m_pNastepny;
+		}
+	}
 }

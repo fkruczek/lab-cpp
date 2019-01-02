@@ -20,7 +20,9 @@ public:
 	void WypiszPracownikow() const;
 
 	const Pracownik* Szukaj(const char* nazwisko, const char* imie) const;
-
+	void Wypisz() const;
+	void Zapisz();
+	void Wczytaj();
 };
 
 #endif
