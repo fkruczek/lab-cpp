@@ -29,7 +29,7 @@ Pracownik & Pracownik::operator=(const Pracownik & wzor)
 		m_Imie = wzor.m_Imie;
 		m_Nazwisko = wzor.m_Nazwisko;
 		m_DataUrodzenia = wzor.m_DataUrodzenia;
-		//m_nIDZatrudnienia = wzor.m_nIDZatrudnienia; //???????
+		//m_nIDZatrudnienia = wzor.m_nIDZatrudnienia;
 		m_pNastepny = wzor.m_pNastepny;
 	}
 	return *this;
@@ -69,22 +69,20 @@ void Pracownik::Wypisz() const
 {
 	std::cout << m_Imie.Zwroc() << '\t' << m_Nazwisko.Zwroc() << '\t'; 
 	m_DataUrodzenia.Wypisz();
-
 }
 
 void Pracownik::Wpisz()
 {
 	char nowe_imie[20];
 	char nowe_nazwisko[25];
-	std::cout << "Podaj imie: ";
+	std::cout << "Podaj imie: " << std::endl;
 	(std::cin >> nowe_imie).get();
 	Imie(nowe_imie);
-	std::cout << "\nPodaj nazwisko: ";
+	std::cout << "Podaj nazwisko: " << std::endl;
 	(std::cin >> nowe_nazwisko).get();
 	Nazwisko(nowe_nazwisko);
-	std::cout << "\nPodaj date: ";
+	std::cout << "Podaj date" << std::endl;
 	m_DataUrodzenia.Wpisz();
-
 }
 
 int Pracownik::SprawdzImie(const char * por_imie) const
@@ -131,11 +129,11 @@ std::istream & operator >> (std::istream & we, Pracownik & p)
 {
 	if (&we == &std::cin)
 	{
-		std::cout << "Podaj Imie ";
+		std::cout << "Podaj Imie: ";
 		we >> p.m_Imie;
 		std::cout << "Podaj nazwisko: ";
 		we >> p.m_Nazwisko;
-		std::cout << "Podaj date urodzenia: " << std::endl;
+		std::cout << "Podaj date" << std::endl;
 		we >> p.m_DataUrodzenia;
 		return we;
 	}
@@ -144,7 +142,7 @@ std::istream & operator >> (std::istream & we, Pracownik & p)
 		we >> p.m_Imie;
 		we >> p.m_Nazwisko;
 		we >> p.m_DataUrodzenia;
-		//dokonczyc ID
+		//ID z pliku rowniez dodaje automatycznie
 		return we;
 	}
 }

@@ -49,19 +49,30 @@ void Data::Wypisz() const
 void Data::Wpisz()
 {
 	int dzien, miesiac, rok;
-	std::cin >> dzien;
-	std::cin >> miesiac;
-	std::cin >> rok;
+	std::cin.clear();
+	std::cin.ignore(std::numeric_limits < std::streamsize >::max(), '\n');
+	while(!(std::cin >> dzien) && !(std::cin >> miesiac) && !(std::cin >> rok)){
+		std::cin.clear();
+		while (std::cin.get() != '\n')
+			continue;
+	}
 	Ustaw(dzien, miesiac, rok);
 }
 
 void Data::Koryguj()
 {
-	int tmp;
-	if ((m_nRok % 4 == 0 && m_nRok % 100 != 0) || m_nRok % 400 == 0) tmp = 29;
-	else tmp = 28;
-	if (m_nMiesiac < 1) m_nMiesiac = 1;
-	if (m_nMiesiac > 12) m_nMiesiac = 12;
+	int dni_lutego;
+	if (m_nRok < 1900)
+		m_nRok = 1900;
+	else if (m_nRok > 2019) 
+		m_nRok = 2019;
+	if ((m_nRok % 4 == 0 && m_nRok % 100 != 0) || m_nRok % 400 == 0)  //warunek na rok przestepny
+		dni_lutego = 29;
+	else dni_lutego = 28;
+	if (m_nMiesiac < 1)
+		m_nMiesiac = 1;
+	else if (m_nMiesiac > 12) 
+		m_nMiesiac = 12;
 	switch (m_nMiesiac)
 	{
 	case 1:	case 3:	case 5:	case 7:	case 8:	case 10: case 12:
@@ -73,11 +84,10 @@ void Data::Koryguj()
 		if (m_nDzien < 1) m_nDzien = 1;
 		break;
 	case 2:
-		if (m_nDzien > tmp)	m_nDzien = tmp;
+		if (m_nDzien > dni_lutego)	m_nDzien = dni_lutego;
 		if (m_nDzien < 1) m_nDzien = 1;
 		break;
 	default:
-		std::cout << "error" << std::endl;
 		break;
 	}
 }
@@ -107,11 +117,11 @@ std::ostream & operator<<(std::ostream & wy, const Data & d)
 std::istream & operator >> (std::istream & we, Data & d)
 {
 	if (&we == &std::cin) {
-		std::cout << "Podaj dzien";
+		std::cout << "Podaj dzien: ";
 		we >> d.m_nDzien;
-		std::cout << "Podaj miesiac";
+		std::cout << "Podaj miesiac: ";
 		we >> d.m_nMiesiac;
-		std::cout << "Podaj rok";
+		std::cout << "Podaj rok: ";
 		we >> d.m_nRok;
 		d.Koryguj();
 		return we;
@@ -126,5 +136,4 @@ std::istream & operator >> (std::istream & we, Data & d)
 		d.Koryguj();
 		return we;
 	}
-	// TODO: insert return statement here
 }

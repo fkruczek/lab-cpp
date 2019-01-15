@@ -56,9 +56,7 @@ void ListaPracownikow::Dodaj(const Pracownik &p)
 void ListaPracownikow::Usun(const Pracownik& wzorzec)
 {
 		if (m_nLiczbaPracownikow == 0)
-		{
-			std::cout << "Lista pusta. Nie ma co usuwac" << std::endl;
-		}
+			std::cout << "LISTA JEST PUSTA" << std::endl;
 		else
 		{
 			Pracownik *x = m_pPoczatek;
@@ -67,6 +65,7 @@ void ListaPracownikow::Usun(const Pracownik& wzorzec)
 				m_pPoczatek = x->m_pNastepny;
 				m_nLiczbaPracownikow--;
 				delete x;
+				std::cout << "Usunieto" << std::endl;
 			}
 			else
 			{
@@ -78,6 +77,7 @@ void ListaPracownikow::Usun(const Pracownik& wzorzec)
 						delete x->m_pNastepny->m_pNastepny;
 						x->m_pNastepny = tmp;
 						m_nLiczbaPracownikow--;
+						std::cout << "Usunieto" << std::endl;
 						break;
 					}
 					else { x = x->m_pNastepny; }
@@ -88,7 +88,8 @@ void ListaPracownikow::Usun(const Pracownik& wzorzec)
 
 void ListaPracownikow::WypiszPracownikow() const
 {
-	if (m_pPoczatek == nullptr) std::cout << "Lista jest pusta. " << std::endl;
+	if (m_pPoczatek == nullptr)
+		std::cout << "LISTA JEST PUSTA" << std::endl;
 	else {
 		Pracownik *tmp = m_pPoczatek;
 		while (tmp != nullptr) 
@@ -122,7 +123,7 @@ void ListaPracownikow::Zapisz()
 	{
 		while (x != nullptr)
 		{
-			plik << *x << "\n";
+			plik << *x;
 			x = x->m_pNastepny;
 		}
 		plik.close();
@@ -133,7 +134,7 @@ void ListaPracownikow::Wczytaj()
 {
 	std::ifstream plik;
 	Pracownik *p;
-	plik.open("dane.txt", std::ios::in);
+	plik.open("danein.txt", std::ios::in);
 	if (plik.good())
 	{
 		while (!plik.eof())
@@ -149,13 +150,14 @@ void ListaPracownikow::Wczytaj()
 
 void ListaPracownikow::Wypisz() const
 {
-	if (m_nLiczbaPracownikow == 0) { std::cout << "Lista pusta" << std::endl; }
+	if (m_nLiczbaPracownikow == 0)
+		std::cout << "LISTA JEST PUSTA" << std::endl;
 	else
 	{
 		Pracownik *x = m_pPoczatek;
 		while (x != nullptr)
 		{
-			std::cout << *x << std::endl;
+			std::cout << *x;
 			x = x->m_pNastepny;
 		}
 	}

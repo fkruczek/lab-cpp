@@ -34,8 +34,10 @@ Kierownik & Kierownik::operator=(const Kierownik & wzor)
 
 bool Kierownik::operator==(const Kierownik & wzor) const
 {
-	if (this->Porownaj(wzor) == 0 && m_NazwaDzialu.SprawdzNapis(wzor.m_NazwaDzialu.Zwroc()) && m_nLiczbaPracownikow == wzor.m_nLiczbaPracownikow) { return true; }
-	else { return false; }
+	if (this->Porownaj(wzor) == 0 && m_NazwaDzialu.SprawdzNapis(wzor.m_NazwaDzialu.Zwroc()) && m_nLiczbaPracownikow == wzor.m_nLiczbaPracownikow)
+		return true;
+	else
+		return false;
 }
 
 void Kierownik::WypiszDane()
@@ -54,15 +56,15 @@ Kierownik * Kierownik::KopiaObiektu()
 std::ostream & operator<<(std::ostream & wy, const Kierownik & p)
 {
 	p.Wypisz();
-	return wy << "\t" << p.m_NazwaDzialu << "\t Liczba pracownikow: " << p.m_nLiczbaPracownikow;
+	return wy << p.m_NazwaDzialu << "Liczba pracownikow: " << p.m_nLiczbaPracownikow;
 }
 
 std::istream & operator>>(std::istream & we, Kierownik & p)
 {
 	p.Wpisz();
-	std::cout << "Podaj nazwe dzialu kierownika: ";
+	std::cout << "Podaj nazwe dzialu: ";
 	we >> p.m_NazwaDzialu;
-	std::cout << "Podaj liczbe pracownikow kierownika: ";
+	std::cout << "Podaj liczbe pracownikow: ";
 	we >> p.m_nLiczbaPracownikow;
 	return we;
 }

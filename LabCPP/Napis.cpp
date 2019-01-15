@@ -62,7 +62,7 @@ void Napis::Wypisz() const
 
 void Napis::Wpisz()
 {
-	std::cout << "Podaj ciag znakow :" << std::endl;
+	std::cout << "Podaj ciag znakow: " << std::endl;
 	std::cin >> m_pszNapis;
 }
 
