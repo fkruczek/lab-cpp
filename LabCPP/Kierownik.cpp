@@ -1,16 +1,14 @@
 #include "Kierownik.h"
 
-Kierownik::Kierownik(const char* nd, int licz) :Pracownik()
+Kierownik::Kierownik(const char *im , const char *naz, int dzien, int miesiac, int rok, const char* nd, int licz) 
+	: Pracownik(im, naz, dzien, miesiac, rok)
 {
 	m_NazwaDzialu.Ustaw(nd);
 	m_nLiczbaPracownikow = licz;
 }
 
-Kierownik::Kierownik(const Kierownik & wzor)
+Kierownik::Kierownik(const Kierownik & wzor) : Pracownik(wzor)
 {
-	m_Imie = wzor.m_Imie;
-	m_Nazwisko = wzor.m_Nazwisko;
-	m_DataUrodzenia = wzor.m_DataUrodzenia;
 	m_NazwaDzialu = wzor.m_NazwaDzialu;
 	m_nLiczbaPracownikow = wzor.m_nLiczbaPracownikow;
 }
@@ -23,9 +21,8 @@ Kierownik & Kierownik::operator=(const Kierownik & wzor)
 {
 	if (&wzor != this)
 	{
-		m_Imie = wzor.m_Imie;
-		m_Nazwisko = wzor.m_Nazwisko;
-		m_DataUrodzenia = wzor.m_DataUrodzenia;
+		(Pracownik&)*this = wzor;
+		this->Pracownik::operator=(wzor);
 		m_NazwaDzialu = wzor.m_NazwaDzialu;
 		m_nLiczbaPracownikow = wzor.m_nLiczbaPracownikow;
 	}
@@ -34,7 +31,9 @@ Kierownik & Kierownik::operator=(const Kierownik & wzor)
 
 bool Kierownik::operator==(const Kierownik & wzor) const
 {
-	if (this->Porownaj(wzor) == 0 && m_NazwaDzialu.SprawdzNapis(wzor.m_NazwaDzialu.Zwroc()) && m_nLiczbaPracownikow == wzor.m_nLiczbaPracownikow)
+	if (this->Porownaj(wzor) == 0 &&
+		m_NazwaDzialu.SprawdzNapis(wzor.m_NazwaDzialu.Zwroc()) &&
+		m_nLiczbaPracownikow == wzor.m_nLiczbaPracownikow)
 		return true;
 	else
 		return false;
@@ -45,18 +44,16 @@ void Kierownik::WypiszDane()
 	std::cout << *this;
 }
 
-Kierownik * Kierownik::KopiaObiektu()
+Kierownik * Kierownik::KopiaObiektu()  const
 {
-	Kierownik *kopia;
-	kopia = new Kierownik();
-	kopia = this;
-	return kopia;
+	return new Kierownik(*this);
 }
 
 std::ostream & operator<<(std::ostream & wy, const Kierownik & p)
 {
 	p.Wypisz();
-	return wy << p.m_NazwaDzialu << "Liczba pracownikow: " << p.m_nLiczbaPracownikow;
+	wy << " Dzial: " << p.m_NazwaDzialu << " Liczba pracownikow: " << p.m_nLiczbaPracownikow << std::endl;
+	return wy;
 }
 
 std::istream & operator>>(std::istream & we, Kierownik & p)

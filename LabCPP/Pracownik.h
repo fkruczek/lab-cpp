@@ -50,10 +50,8 @@ public:
 	int SprawdzNazwisko(const char *por_nazwisko) const;
 
 	int Porownaj(const Pracownik& wzorzec) const;
-
-	friend class Kierownik;
 	virtual void WypiszDane();
-	virtual Pracownik * KopiaObiektu();
+	virtual Pracownik * KopiaObiektu()  const;
 };
 
 

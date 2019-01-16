@@ -43,19 +43,18 @@ int Data::Rok() const
 
 void Data::Wypisz() const
 {
-	std::cout << m_nDzien << "-" << m_nMiesiac << "-" << m_nRok << std::endl;
+	std::cout << m_nDzien << "-" << m_nMiesiac << "-" << m_nRok;
 }
 
 void Data::Wpisz()
 {
 	int dzien, miesiac, rok;
-	std::cin.clear();
-	std::cin.ignore(std::numeric_limits < std::streamsize >::max(), '\n');
-	while(!(std::cin >> dzien) && !(std::cin >> miesiac) && !(std::cin >> rok)){
-		std::cin.clear();
-		while (std::cin.get() != '\n')
-			continue;
-	}
+	std::cout << "Podaj dzien: " << std::endl;
+	std::cin >> dzien;
+	std::cout << "Podaj miesiac: " << std::endl;
+	std::cin >> miesiac; 
+	std::cout << "Podaj rok: " << std::endl;
+	std::cin >> rok;
 	Ustaw(dzien, miesiac, rok);
 }
 

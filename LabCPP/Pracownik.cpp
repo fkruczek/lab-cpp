@@ -1,17 +1,17 @@
-#define _CRT_SECURE_NO_WARNINGS 
+#define _CRT_SECURE_NO_WARNINGS z
 #include "Pracownik.h"
 #include <iostream>
 #include <cstring>
 int Pracownik::m_ID = 1000;
-Pracownik::Pracownik(const char * im, const char * naz, int dzien, int miesiac, int rok) :m_nIDZatrudnienia(++m_ID)
+Pracownik::Pracownik(const char * im, const char * naz, int dzien, int miesiac, int rok) : m_Imie(im), m_Nazwisko(naz), m_nIDZatrudnienia(++m_ID)
 {
-	m_Imie.Ustaw(im);
-	m_pNastepny = nullptr;
-	m_Nazwisko.Ustaw(naz);
-	m_DataUrodzenia.Ustaw(dzien, miesiac, rok);
+	//m_Imie.Ustaw(im);
+	//m_pNastepny = nullptr;
+	//m_Nazwisko.Ustaw(naz);
+	//m_DataUrodzenia.Ustaw(dzien, miesiac, rok);
 }
 
-Pracownik::Pracownik(const Pracownik & wzor) :m_nIDZatrudnienia(wzor.m_nIDZatrudnienia)
+Pracownik::Pracownik(const Pracownik & wzor) : m_Imie(wzor.m_Imie), m_nIDZatrudnienia(wzor.m_nIDZatrudnienia)
 {
 	m_pNastepny = wzor.m_pNastepny;
 	m_Imie = wzor.m_Imie;
@@ -112,12 +112,9 @@ void Pracownik::WypiszDane()
 	std::cout << *this;
 }
 
-Pracownik * Pracownik::KopiaObiektu()
+Pracownik * Pracownik::KopiaObiektu() const
 {
-	Pracownik *kopia;
-	kopia = new Pracownik();
-	kopia = this;
-	return kopia;
+	return new Pracownik(*this);
 }
 
 std::ostream & operator<<(std::ostream & wy, const Pracownik & p)

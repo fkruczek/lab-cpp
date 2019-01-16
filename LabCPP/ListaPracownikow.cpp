@@ -18,7 +18,7 @@ ListaPracownikow::~ListaPracownikow()
 void ListaPracownikow::Dodaj(const Pracownik &p)
 {
 	Pracownik *kopia = nullptr;
-	kopia = new Pracownik(p);
+	kopia = p.KopiaObiektu();
 	if (m_nLiczbaPracownikow == 0)
 	{
 		m_pPoczatek = kopia;
@@ -52,6 +52,7 @@ void ListaPracownikow::Dodaj(const Pracownik &p)
 		}
 	}
 }
+
 
 void ListaPracownikow::Usun(const Pracownik& wzorzec)
 {
@@ -157,7 +158,7 @@ void ListaPracownikow::Wypisz() const
 		Pracownik *x = m_pPoczatek;
 		while (x != nullptr)
 		{
-			std::cout << *x;
+			x->WypiszDane();
 			x = x->m_pNastepny;
 		}
 	}

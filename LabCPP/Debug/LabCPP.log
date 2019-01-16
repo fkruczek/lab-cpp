@@ -1,4 +1,7 @@
-﻿  ListaPracownikow.cpp
+﻿  Data.cpp
+  glowny.cpp
+  Kierownik.cpp
+  ListaPracownikow.cpp
   Napis.cpp
   Pracownik.cpp
   Generating Code...

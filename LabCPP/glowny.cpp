@@ -6,12 +6,14 @@
 #include "Pracownik.h"
 #include "Napis.h"
 #include "ListaPracownikow.h"
+#include "Kierownik.h"
 void WyswietlMenu();
 int main()
 {
 	bool czyWyjsc = false;
 	char wybor;
 	Pracownik *osoba;
+	Kierownik *kiero;
 	const Pracownik *o;
 	ListaPracownikow Pracownicy;
 	while (!czyWyjsc)
@@ -21,11 +23,22 @@ int main()
 		switch (wybor)
 		{
 			case 'd':
-				std::cout << "Dane pracownika do dodania:" << std::endl;
-				osoba = new Pracownik;
-				std::cin >> *osoba;
-				Pracownicy.Dodaj(*osoba);
-				delete osoba;
+				std::cout << "p - pracownik \nk - kierownik" << std::endl;
+				std::cin >> wybor;
+				if (wybor == 'p') {
+					std::cout << "Dane pracownika do dodania:" << std::endl;
+					osoba = new Pracownik;
+					std::cin >> *osoba;
+					Pracownicy.Dodaj(*osoba);
+					delete osoba;
+				}
+				else {
+					std::cout << "Dane kierownika do dodania:" << std::endl;
+					kiero = new Kierownik;
+					std::cin >> *kiero;
+					Pracownicy.Dodaj(*kiero);
+					delete kiero;
+				}
 				break;
 			case 'u':
 				std::cout << "Dane pracownika do usuniecia:" << std::endl;

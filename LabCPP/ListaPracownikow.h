@@ -3,6 +3,7 @@
 #define _ListaPracownikow_H_
 
 #include "Pracownik.h"
+#include "Kierownik.h"
 
 class ListaPracownikow
 {
