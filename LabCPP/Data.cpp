@@ -12,6 +12,13 @@ Data::Data(int d, int m, int r)
 	int m_nRok = r;
 }
 
+Data::Data(const Data & nowa)
+{
+	m_nDzien = nowa.m_nDzien;
+	m_nMiesiac = nowa.m_nMiesiac;
+	m_nRok = nowa.m_nRok;
+}
+
 
 Data::~Data()
 {

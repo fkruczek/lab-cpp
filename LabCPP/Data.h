@@ -14,6 +14,7 @@ private:
 public:
 	Data();
 	Data(int d, int m, int r);
+	Data(const Data & nowa);
 	~Data();
 	void Ustaw(int d, int m, int r);
 

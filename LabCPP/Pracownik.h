@@ -23,7 +23,7 @@ public:
 	friend std::ostream & operator<<(std::ostream &wy, const Pracownik &p);
 	friend std::istream & operator>>(std::istream &we, Pracownik &p);
 
-	Pracownik* m_pNastepny;
+	Pracownik* m_pNastepny = nullptr;
 
 	//metody informacyjne
 

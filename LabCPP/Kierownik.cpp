@@ -1,12 +1,13 @@
 #include "Kierownik.h"
 
-Kierownik::Kierownik(const char *im , const char *naz, int dzien, int miesiac, int rok, const char* nd, int licz) 
-	: Pracownik(im, naz, dzien, miesiac, rok)
+//konstruktor pochodny musi miec na liscie inicjalizacyjnej konstruktor klasy posdstawowej
+Kierownik::Kierownik(const char *im, const char *naz, int dzien, int miesiac, int rok, const char* nd, int licz)
+	: Pracownik(im, naz, dzien, miesiac, rok), m_NazwaDzialu(nd)
 {
-	m_NazwaDzialu.Ustaw(nd);
 	m_nLiczbaPracownikow = licz;
 }
 
+//mozna dokonac konwersji
 Kierownik::Kierownik(const Kierownik & wzor) : Pracownik(wzor)
 {
 	m_NazwaDzialu = wzor.m_NazwaDzialu;
@@ -21,8 +22,9 @@ Kierownik & Kierownik::operator=(const Kierownik & wzor)
 {
 	if (&wzor != this)
 	{
+		//jawne rzutowanie kierownika na typ pracownik
 		(Pracownik&)*this = wzor;
-		this->Pracownik::operator=(wzor);
+		//rownowanznie: this->Pracownik::operator=(wzor);
 		m_NazwaDzialu = wzor.m_NazwaDzialu;
 		m_nLiczbaPracownikow = wzor.m_nLiczbaPracownikow;
 	}

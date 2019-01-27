@@ -3,7 +3,11 @@
 #include <iostream>
 #include <cstring>
 int Pracownik::m_ID = 1000;
-Pracownik::Pracownik(const char * im, const char * naz, int dzien, int miesiac, int rok) : m_Imie(im), m_Nazwisko(naz), m_nIDZatrudnienia(++m_ID)
+Pracownik::Pracownik(const char * im, const char * naz, int dzien, int miesiac, int rok) :
+	m_Imie(im),
+	m_Nazwisko(naz),
+	m_DataUrodzenia(dzien, miesiac, rok),
+	m_nIDZatrudnienia(++m_ID)
 {
 	//m_Imie.Ustaw(im);
 	//m_pNastepny = nullptr;
@@ -11,12 +15,16 @@ Pracownik::Pracownik(const char * im, const char * naz, int dzien, int miesiac, 
 	//m_DataUrodzenia.Ustaw(dzien, miesiac, rok);
 }
 
-Pracownik::Pracownik(const Pracownik & wzor) : m_Imie(wzor.m_Imie), m_nIDZatrudnienia(wzor.m_nIDZatrudnienia)
+Pracownik::Pracownik(const Pracownik & wzor) :
+	m_Imie(wzor.m_Imie),
+	m_Nazwisko(wzor.m_Nazwisko),
+	m_DataUrodzenia(wzor.m_DataUrodzenia),
+	m_nIDZatrudnienia(wzor.m_nIDZatrudnienia)
 {
-	m_pNastepny = wzor.m_pNastepny;
-	m_Imie = wzor.m_Imie;
-	m_Nazwisko = wzor.m_Nazwisko;
-	m_DataUrodzenia = wzor.m_DataUrodzenia;
+	//m_pNastepny = wzor.m_pNastepny;
+	//m_Imie = wzor.m_Imie;
+	//m_Nazwisko = wzor.m_Nazwisko;
+	//m_DataUrodzenia = wzor.m_DataUrodzenia;
 }
 
 Pracownik::~Pracownik()
@@ -37,7 +45,10 @@ Pracownik & Pracownik::operator=(const Pracownik & wzor)
 
 bool Pracownik::operator==(const Pracownik & wzor) const
 {
-	return false;
+	if (this->Porownaj(wzor) == 0)
+		return true;
+	else
+		return false;
 }
 
 const char * Pracownik::Imie() const
@@ -67,7 +78,7 @@ void Pracownik::DataUrodzenia(int nowy_dzien, int nowy_miesiac, int nowy_rok)
 
 void Pracownik::Wypisz() const
 {
-	std::cout << m_Imie.Zwroc() << " " << m_Nazwisko.Zwroc() << " "; 
+	std::cout << m_nIDZatrudnienia << " " << m_Imie.Zwroc() << " " << m_Nazwisko.Zwroc() << " ";
 	m_DataUrodzenia.Wypisz();
 }
 
