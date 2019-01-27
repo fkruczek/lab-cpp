@@ -75,7 +75,7 @@ void ListaPracownikow::Usun(const Pracownik& wzorzec)
 					if (wzorzec.Porownaj(*x->m_pNastepny) == 0)
 					{
 						Pracownik *tmp = x->m_pNastepny->m_pNastepny;
-						delete x->m_pNastepny->m_pNastepny;
+						delete x->m_pNastepny;
 						x->m_pNastepny = tmp;
 						m_nLiczbaPracownikow--;
 						std::cout << "Usunieto" << std::endl;
@@ -105,6 +105,7 @@ const Pracownik * ListaPracownikow::Szukaj(const char * nazwisko, const char * i
 {
 	Pracownik *x = m_pPoczatek;
 	Napis nazw, im;
+
 	nazw.Ustaw(nazwisko);
 	im.Ustaw(imie);
 

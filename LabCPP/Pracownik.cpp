@@ -67,7 +67,7 @@ void Pracownik::DataUrodzenia(int nowy_dzien, int nowy_miesiac, int nowy_rok)
 
 void Pracownik::Wypisz() const
 {
-	std::cout << m_Imie.Zwroc() << '\t' << m_Nazwisko.Zwroc() << '\t'; 
+	std::cout << m_Imie.Zwroc() << " " << m_Nazwisko.Zwroc() << " "; 
 	m_DataUrodzenia.Wypisz();
 }
 

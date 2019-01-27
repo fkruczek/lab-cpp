@@ -1,8 +1,4 @@
-﻿  Data.cpp
-  glowny.cpp
-  Kierownik.cpp
-  ListaPracownikow.cpp
-  Napis.cpp
+﻿  Kierownik.cpp
   Pracownik.cpp
   Generating Code...
   LabCPP.vcxproj -> C:\Users\Fryderyk\Projects\LabCPP\LabCPP\Debug\LabCPP.exe
